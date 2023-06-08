@@ -1,0 +1,8 @@
+.taskstyle {
+    cursor: pointer;
+    text-decoration: none;
+}
+.taskstyleList {
+    cursor: pointer;
+    text-decoration: line-through;
+}
