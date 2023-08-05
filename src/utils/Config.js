@@ -1,9 +1,26 @@
+/* eslint-disable no-undef */
+import {
+  API_KEY,
+  AUTH_DOMAIN,
+  PROJECT_ID,
+  DATABASE_URL,
+  STORAGE_BUCKET,
+  MASSAGING_SENDER_ID,
+  APP_ID,
+} from "../constant/FirebaseKey"
 export const firebaseConfig = {
-  apiKey: "AIzaSyBckGyUyf2A9dxjY43AyuOB4v5-FhJcfwE",
-  authDomain: "todolist-92768.firebaseapp.com",
-  databaseURL: "https://todolist-92768-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "todolist-92768",
-  storageBucket: "todolist-92768.appspot.com",
-  messagingSenderId: "954066710898",
-  appId: "1:954066710898:web:74e7c9c0a0367213a96deb",
+  // apiKey: process.env.API_KEY,
+  // authDomain: process.env.AUTH_DOMAIN,
+  // databaseURL: process.env.DATABASE_URL,
+  // projectId: process.env.PROJECT_ID,
+  // storageBucket: process.env.STORAGE_BUCKET,
+  // messagingSenderId: process.env.MASSAGING_SENDER_ID,
+  // appId: process.env.APP_ID,
+  apiKey: { API_KEY },
+  authDomain: { AUTH_DOMAIN },
+  databaseURL: { DATABASE_URL },
+  projectId: { PROJECT_ID },
+  storageBucket: { STORAGE_BUCKET },
+  messagingSenderId: { MASSAGING_SENDER_ID },
+  appId: { APP_ID },
 }
