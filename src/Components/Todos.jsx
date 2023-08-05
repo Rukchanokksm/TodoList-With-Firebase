@@ -1,30 +1,18 @@
 import React, { useState } from "react"
 // import firebase from "../utils/Firebase"
-import { getDatabase, push, ref } from "firebase/database"
-import { initializeApp } from "firebase/app"
-import { firebaseConfig } from "../utils/Config"
+import { push, ref } from "firebase/database"
+import db from "../utils/Firebase"
 
 const Todoform = () => {
-  const app = initializeApp(firebaseConfig)
-  const db = getDatabase(app)
-  // const myList = []
   const [title, setTitle] = useState("")
-  // const [onLists, setOnList] = useState(myList)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // setOnList([
-    //   ...onLists,
-    //   {
-    //     id: Math.floor(Math.random() * 1000),
-    //     list: title,
-    //     del: false,
-    //   },
-    // ])
+
     const todoRef = ref(db, "todos")
     const todo = {
       list: title,
-      del: false,
+      complete: false,
     }
     push(todoRef, todo)
     setTitle("")

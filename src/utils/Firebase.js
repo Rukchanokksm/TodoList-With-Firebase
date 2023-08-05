@@ -1,7 +1,8 @@
-/* eslint-disable no-import-assign */
-import { getDatabase } from "firebase/database"
-import { initializeApp } from "firebase/app"
-import { firebaseConfig } from "./Config"
+import { initializeApp } from "@firebase/app"
+import { getDatabase } from "@firebase/database"
+import { firebaseConfig } from "../utils/Config"
 
 const app = initializeApp(firebaseConfig)
-export default getDatabase(app)
+const db = getDatabase(app)
+
+export default db

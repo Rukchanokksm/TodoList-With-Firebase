@@ -1,12 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from "react"
-import { firebaseConfig } from "../utils/Config"
-import { initializeApp } from "firebase/app"
-import { getDatabase, onValue, ref } from "firebase/database"
+import { onValue, ref } from "firebase/database"
+import Todo from "./Todo"
+import db from "../utils/Firebase"
 
 const TodoList = () => {
-  const app = initializeApp(firebaseConfig)
-  const db = getDatabase(app)
   const [todoList, setTodoList] = useState([])
 
   useEffect(() => {
@@ -23,9 +21,20 @@ const TodoList = () => {
 
   return (
     <div>
+      {/* {todoList &&
+        todoList.map((todo, index) => {
+          return (
+            <>
+              <div key={index}>
+                <p>{todo.list}</p>
+                <p>{todo.id}</p>
+              </div>
+            </>
+          )
+        })} */}
       {todoList &&
         todoList.map((todo, index) => {
-          return <p key={index}>{todo.list}</p>
+          return <Todo todo={todo} key={index} />
         })}
     </div>
   )
