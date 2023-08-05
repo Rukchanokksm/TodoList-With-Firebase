@@ -1,11 +1,13 @@
 import React from "react"
 import "./App.css"
-import TopicHead from "./Compound/TopicHead"
+import Todos from "./Components/Todos"
+import TodoList from "./Components/TodoList"
 
 function App() {
   return (
     <div className="App">
-      <TopicHead />
+      <Todos />
+      <TodoList />
     </div>
   )
 }
