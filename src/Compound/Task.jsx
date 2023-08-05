@@ -6,7 +6,7 @@ const Task = (props) => {
   const { onList, index, toggleList, deleteBtn } = props
 
   return (
-    <div>
+    <div className={TaskStyle.maintask}>
       <p
         onClick={() => toggleList(index)}
         className={onList.del ? `${TaskStyle.taskstyleList}` : `${TaskStyle.taskstyle}`}
@@ -14,7 +14,6 @@ const Task = (props) => {
         {onList.list}
       </p>
       <button onClick={() => deleteBtn(index)}>Delete</button>
-      <hr />
     </div>
   )
 }
