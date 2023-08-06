@@ -1,6 +1,6 @@
 # TodoList with Firebase Store using React.js
 
-![Alt text](image.png)
+![Alt text](src/image/image.png)
 
 This project is a simple TodoList application that uses Firebase Realtime Database for storing and managing tasks. The application is built using React.js and provides four main functionalities: push, read, update, and delete.
 

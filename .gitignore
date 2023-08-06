@@ -14,7 +14,7 @@
 #
 src/constant
 src/utils/Config.js
-scr/image
+src/image
 
 # misc
 .DS_Store
