@@ -13,6 +13,8 @@
 
 #
 src/constant
+src/utils/Config.js
+scr/image
 
 # misc
 .DS_Store
