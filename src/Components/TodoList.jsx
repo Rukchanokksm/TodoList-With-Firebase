@@ -1,41 +1,18 @@
-/* eslint-disable react/react-in-jsx-scope */
-import { useEffect, useState } from "react"
-import { onValue, ref } from "firebase/database"
+// Firebase disabled temporarily
+// import { onValue, ref } from "firebase/database"
+// import db from "../utils/Firebase"
 import Todo from "./Todo"
-import db from "../utils/Firebase"
 
-const TodoList = () => {
-  const [todoList, setTodoList] = useState([])
-
-  useEffect(() => {
-    const todoRef = ref(db, "todos")
-    onValue(todoRef, (Snapshot) => {
-      const Data = Snapshot.val()
-      const newTodolist = []
-      for (let id in Data) {
-        newTodolist.push({ id, ...Data[id] })
-      }
-      setTodoList(newTodolist)
-    })
-  }, [db])
+const TodoList = ({ todoList, onDelete, onToggle }) => {
+  if (todoList.length === 0) {
+    return <p className="todo-empty">No tasks yet. Add one above!</p>
+  }
 
   return (
-    <div>
-      {/* {todoList &&
-        todoList.map((todo, index) => {
-          return (
-            <>
-              <div key={index}>
-                <p>{todo.list}</p>
-                <p>{todo.id}</p>
-              </div>
-            </>
-          )
-        })} */}
-      {todoList &&
-        todoList.map((todo, index) => {
-          return <Todo todo={todo} key={index} />
-        })}
+    <div className="todo-list">
+      {todoList.map((todo) => (
+        <Todo todo={todo} key={todo.id} onDelete={onDelete} onToggle={onToggle} />
+      ))}
     </div>
   )
 }

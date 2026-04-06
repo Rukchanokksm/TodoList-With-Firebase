@@ -1,46 +1,147 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0f0f;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 .App {
-  text-align: center;
-  background-color: black;
-  height: 100dvh;
-  color: #ffff;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
   min-height: 100vh;
+}
+
+.card {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 480px;
+  height: fit-content;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ---- Header ---- */
+.card-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ---- Form ---- */
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.todo-input {
+  flex: 1;
+  background-color: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.todo-input::placeholder {
+  color: #666;
+}
+
+.todo-input:focus {
+  border-color: #555;
+}
+
+.todo-add-btn {
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 10px 16px;
+  transition: background-color 0.2s;
+  line-height: 1;
+}
+
+.todo-add-btn:hover {
+  background-color: #2563eb;
+}
+
+/* ---- Todo list ---- */
+.todo-list {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+}
+
+/* ---- Todo item ---- */
+.todo-item {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #242424;
+  border-radius: 10px;
+  gap: 12px;
+  padding: 12px 14px;
+  transition: background-color 0.15s;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-item:hover {
+  background-color: #2a2a2a;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #3b82f6;
+  flex-shrink: 0;
+}
+
+.todo-text {
+  flex: 1;
+  color: #e5e5e5;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.todo-text.completed {
+  color: #555;
+  text-decoration: line-through;
+}
+
+.todo-delete-btn {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.todo-delete-btn:hover {
+  color: #ef4444;
+}
+
+.todo-empty {
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+  padding: 24px 0;
 }

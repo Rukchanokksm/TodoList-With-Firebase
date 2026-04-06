@@ -12,7 +12,7 @@
 /build
 
 #
-src/constant
+constant
 src/utils/Config.js
 src/image
 
