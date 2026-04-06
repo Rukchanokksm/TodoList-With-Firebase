@@ -1,26 +1,45 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./App.css"
 import Todos from "./Components/Todos"
 import TodoList from "./Components/TodoList"
+import { ref, push, remove, update, onValue } from "firebase/database"
+import db from "./utils/Firebase"
 
 function App() {
   const [todoList, setTodoList] = useState([])
 
+  useEffect(() => {
+    const todosRef = ref(db, "todos")
+    const unsubscribe = onValue(todosRef, (snapshot) => {
+      const data = snapshot.val()
+      if (data) {
+        const loaded = Object.entries(data).map(([key, val]) => ({
+          id: key,
+          ...val,
+        }))
+        setTodoList(loaded)
+      } else {
+        setTodoList([])
+      }
+    })
+    return () => unsubscribe()
+  }, [])
+
   const handleAdd = (title) => {
-    const newTodo = {
-      id: Date.now().toString(),
-      list: title,
-      complete: false,
-    }
-    setTodoList((prev) => [...prev, newTodo])
+    const todosRef = ref(db, "todos")
+    push(todosRef, { list: title, complete: false })
   }
 
   const handleDelete = (id) => {
-    setTodoList((prev) => prev.filter((t) => t.id !== id))
+    const todoRef = ref(db, `todos/${id}`)
+    remove(todoRef)
   }
 
   const handleToggle = (id) => {
-    setTodoList((prev) => prev.map((t) => (t.id === id ? { ...t, complete: !t.complete } : t)))
+    const todo = todoList.find((t) => t.id === id)
+    if (!todo) return
+    const todoRef = ref(db, `todos/${id}`)
+    update(todoRef, { complete: !todo.complete })
   }
 
   return (

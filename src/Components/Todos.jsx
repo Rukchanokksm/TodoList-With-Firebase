@@ -24,7 +24,9 @@ const Todoform = ({ onAdd }) => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <button className="todo-add-btn" type="submit">+</button>
+        <button className="todo-add-btn" type="submit">
+          +
+        </button>
       </form>
     </div>
   )

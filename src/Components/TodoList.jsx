@@ -1,6 +1,4 @@
-// Firebase disabled temporarily
-// import { onValue, ref } from "firebase/database"
-// import db from "../utils/Firebase"
+import React from "react"
 import Todo from "./Todo"
 
 const TodoList = ({ todoList, onDelete, onToggle }) => {
