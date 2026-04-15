@@ -1,7 +1,7 @@
 import React from "react"
 import Todo from "./Todo"
 
-const TodoList = ({ todoList, onDelete, onToggle }) => {
+const TodoList = ({ todoList, onDelete, onToggle, onUpdate }) => {
   if (todoList.length === 0) {
     return <p className="todo-empty">No tasks yet. Add one above!</p>
   }
@@ -9,7 +9,7 @@ const TodoList = ({ todoList, onDelete, onToggle }) => {
   return (
     <div className="todo-list">
       {todoList.map((todo) => (
-        <Todo todo={todo} key={todo.id} onDelete={onDelete} onToggle={onToggle} />
+        <Todo todo={todo} key={todo.id} onDelete={onDelete} onToggle={onToggle} onUpdate={onUpdate} />
       ))}
     </div>
   )

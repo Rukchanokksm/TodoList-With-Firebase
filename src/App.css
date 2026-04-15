@@ -91,7 +91,7 @@ body {
 /* ---- Todo item ---- */
 .todo-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: #242424;
   border-radius: 10px;
   gap: 12px;
@@ -109,10 +109,19 @@ body {
   cursor: pointer;
   accent-color: #3b82f6;
   flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ---- Todo body (text + description + timestamps) ---- */
+.todo-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
 }
 
 .todo-text {
-  flex: 1;
   color: #e5e5e5;
   font-size: 15px;
   word-break: break-word;
@@ -121,6 +130,116 @@ body {
 .todo-text.completed {
   color: #555;
   text-decoration: line-through;
+}
+
+.todo-description {
+  color: #888;
+  font-size: 13px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.todo-timestamps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.todo-timestamps span {
+  color: #444;
+  font-size: 11px;
+}
+
+/* ---- Edit mode ---- */
+.todo-edit-input {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  padding: 6px 10px;
+  outline: none;
+  width: 100%;
+}
+
+.todo-edit-input:focus {
+  border-color: #3b82f6;
+}
+
+.todo-edit-textarea {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  outline: none;
+  resize: vertical;
+  width: 100%;
+  font-family: inherit;
+}
+
+.todo-edit-textarea:focus {
+  border-color: #3b82f6;
+}
+
+.todo-edit-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.todo-save-btn {
+  background-color: #3b82f6;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 12px;
+  transition: background-color 0.2s;
+}
+
+.todo-save-btn:hover {
+  background-color: #2563eb;
+}
+
+.todo-cancel-btn {
+  background-color: #333;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px 12px;
+  transition: background-color 0.2s;
+}
+
+.todo-cancel-btn:hover {
+  background-color: #3a3a3a;
+}
+
+/* ---- Action buttons ---- */
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.todo-edit-btn {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.todo-edit-btn:hover {
+  color: #3b82f6;
 }
 
 .todo-delete-btn {

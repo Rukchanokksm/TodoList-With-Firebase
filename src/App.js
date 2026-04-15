@@ -27,7 +27,8 @@ function App() {
 
   const handleAdd = (title) => {
     const todosRef = ref(db, "todos")
-    push(todosRef, { list: title, complete: false })
+    const now = Date.now()
+    push(todosRef, { list: title, complete: false, description: "", createdAt: now, updatedAt: now, completedAt: null })
   }
 
   const handleDelete = (id) => {
@@ -38,15 +39,24 @@ function App() {
   const handleToggle = (id) => {
     const todo = todoList.find((t) => t.id === id)
     if (!todo) return
+    const nowComplete = !todo.complete
     const todoRef = ref(db, `todos/${id}`)
-    update(todoRef, { complete: !todo.complete })
+    update(todoRef, {
+      complete: nowComplete,
+      completedAt: nowComplete ? Date.now() : null,
+    })
+  }
+
+  const handleUpdate = (id, { list, description }) => {
+    const todoRef = ref(db, `todos/${id}`)
+    update(todoRef, { list, description, updatedAt: Date.now() })
   }
 
   return (
     <div className="App">
       <div className="card">
         <Todos onAdd={handleAdd} />
-        <TodoList todoList={todoList} onDelete={handleDelete} onToggle={handleToggle} />
+        <TodoList todoList={todoList} onDelete={handleDelete} onToggle={handleToggle} onUpdate={handleUpdate} />
       </div>
     </div>
   )
